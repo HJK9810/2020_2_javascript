@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>설문지</title>
+        <style>
+            body {background-color: paleturquoise;}
+            h1 {color: brown; text-align: center;}
+            hr {border: 1px solid black;}
+        </style>
+        <style>
+            p {text-indent: 1em; font-size: 1em; font-family: 휴먼편지체;}
+            h3 {color: blue; display: inline;}
+            section {background-color: lightpink; padding: 10px; padding-left: 20px;}
+            label {text-indent: 3px; font-size: 1em; font-family: 휴먼편지체;}
+            footer {border-radius: 10px; background: lightsalmon;}
+        </style>
+    </head>
+    <body>
+        <h1>설문지</h1>
+        <p>소프트웨어 기술에 대한 의견을 듣습니다. 많은 참여 부탁드립니다.</p>
+        <hr>
+        <section>
+            <article>
+                <form>
+                    <h3>학년</h3>
+                    <label><input type="radio" name="grade" value="1" checked>1학년</label>
+                    <label><input type="radio" name="grade" value="2">2학년</label>
+                    <label><input type="radio" name="grade" value="3">3학년</label>
+                    <label><input type="radio" name="grade" value="4">4학년</label>
+                </form>
+                <form>
+                    <h3>성별</h3> 
+                    <label><input type="radio" name="gender" value="1">남자</label>
+                    <label><input type="radio" name="gender" value="2">여자</label>
+                </form>
+                <form>
+                    <h3>관심분야</h3>
+                    <select name="type">
+                        <option value="1">알고리즘</option>
+                        <option value="2">보안 개발자</option>
+                        <option value="3">보안 관리자</option>
+                        <option value="4">소프트웨어 아키텍트</option>
+                        <option value="5">웹 개발</option>
+                        <option value="6" selected>모바일 소프트웨어</option>
+                        <option value="7">임베디드 시스템</option>
+                        <option value="8">빅데이터</option>
+                    </select>
+                </form>
+                <form>
+                    <h3>진로</h3> 
+                    <label><input type="checkbox" value="1" checked>개발</label>
+                    <label><input type="checkbox" value="2">기획</label>
+                    <label><input type="checkbox" value="3">영업</label>
+                    <label><input type="checkbox" value="4">창업</label>
+                </form>
+                <form>
+                    <h3>남기고싶은말</h3>
+                    <textarea cols="60" rows="20" placeholder="글을 남겨주세요."></textarea>
+                </form>
+            </article>
+        </section>
+        <footer>
+            <p>2020년 2학기 웹프로그래밍 과제</p>
+        </footer>
+    </body>
+</html>

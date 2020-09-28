@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>produce myself</title>
+        <style>
+            body {background-color: lightsteelblue; color : green; margin-left: 40px; margin-right: 40px; }
+            h3 {text-align: center; color : darkblue; }
+            hr {height: 5px; border: solid grey; background-color: grey }
+            span {color : darkred; font-size: 20px; }
+        </style>
+        <script>
+        function show() {
+            document.getElementById("fig").src="myface.jpg";
+        }
+        function hide() {
+            document.getElementById("fig").src="";
+        }
+        </script>
+    </head>
+    <body>
+        <h3 onmouseover="show()" onmouseout="hide()">
+            김희주</h3>
+        <hr>
+        <div><img id="fig" src=""></div>
+        저는 대한민국에서 태어나서 소프트웨어를 전공하는 학생입니다. 제가 제일 좋아하는 과목은 딱히 없지만 <span>웹 프로그래밍</span>을 좋아해 보려고 합니다. 우선 <span>자바스크립트</span>는 해 본적이 있습니다.
+    </body>
+</html>
