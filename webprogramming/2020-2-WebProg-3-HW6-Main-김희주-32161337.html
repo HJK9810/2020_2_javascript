@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>별 문자 출력</title>
+        <script>
+            function printStar(n) {
+                var m = parseInt(n);
+
+                if(isNaN(m)) {
+                    document.write("입력 오류 입니다.");
+                }
+                else { // 두번째 반복문을 for문으로 사용시 피라미드가 그려지지 않았기에 while문으로 교환했다. 
+                    for(var i = 1 ; i <= n ; i++) {
+                        var j = 1;
+                        while(j <= i) {
+                            document.write("*");
+                            j++;
+                        }
+                        document.write("<br>");
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h3>별 문자 출력하기</h3>
+        <hr>
+        <script>
+            var n = prompt("정수를 입력하세요.", "");
+            printStar(n);
+        </script>
+    </body>
+</html>
