@@ -1,0 +1,71 @@
+<!-- 미완성 차트가 그려지지 않음.-->
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>파이차트 그리기</title>
+        <style>
+            canvas {background-color: lightcyan; height: 400px; width: 660px;}
+        </style>
+        <script>
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+            var color = ["blue", "green", "yellow", "magenta", "red"];
+            var grades = ["A", "B", "C", "D", "F"];
+            var gradeParcent = [0, 0, 0, 0, 0];
+            var centerX = canvas.clientHeight / 2;
+            var centerY = canvas.clientWidth / 2;
+
+            function drawChart() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                var sum = 0;
+                var rateParcent = [0, 0, 0, 0, 0];
+                var degree = 0;
+                var r = centerX - 30;
+
+                for (var i = 0 ; i < 5 ; i++) {
+                    gradeParcent[i] = document.getElementById(grades[i]).value;
+                    sum += gradeParcent[i];
+                }
+
+                for ( var i = 0 ; i < 5 ; i++) {
+                    gradeParcent[i] = gradeParcent[i] / sum * 100;
+                    rateParcent[i] = 360 * gradeParcent[i] / 100;
+
+                    var str = grades[i] + "학점" + gradeParcent[i] + "% : " + color[i];
+                    context.fillstyle = "blue";
+                    context.fillText(str, 20, 30);
+
+                    context.beginPath();
+                    context.moveTo(centerX, centerY);
+                    context.fillstyle = color[i];
+                    if(i == 0){
+                        context.arc(centerY, centerX, r, (Math.PI/180)*0, (Math.PI/180)* rateParcent[i] , false);
+                        degree = rateParcent[i];
+                    } else {
+                        context.arc(centerY, centerX, r, (Math.PI/180)*degree, (Math.PI/180)*(degree + rateParcent[i]), false);
+                        degree =  degree + rateParcent[i];
+                    }
+                    ctx.closePath();
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h3>학점 별로 학생 수를 입력하면 파이 차트로 비율 그리기</h3>
+        <hr>
+        <p>미완성. 차트가 그려지지 않음. 캔버스 스크립트 오류로 추정</p>
+        <form>
+            <label>A <input type="number" value="" id="A">명</label>
+            <label>B <input type="number" value="" id="B">명</label>
+            <label>C <input type="number" value="" id="C">명</label>
+            <br>
+            <label>D <input type="number" value="" id="D">명</label>
+            <label>F <input type="number" value="" id="F">명</label>
+            <button id="chart" onclick="drawChart()">차트 그리기</button>
+        </form>
+        <br>
+        <canvas id="myCanvas"></canvas>
+    </body>
+</html>
