@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>단어장 출력</title>
+        <style>
+            table {background-color: lightcyan}
+            #key {font-weight: bold; text-align: center;}
+        </style>
+    </head>
+    <body>
+        <h3>나의 단어장 모두 출력</h3>
+        <hr>
+        <table id="tb"></table>
+        <script>
+            var table = document.getElementById("tb");
+
+            for(var i = 0 ; i < sessionStorage.length ; i++) {
+                var key = sessionStorage.key(i);
+                var value = sessionStorage.getItem(key);
+
+                var row = document.createElement("tr");
+
+                var col1 = document.createElement("td");
+                col1.innerHTML = i + 1;
+                row.appendChild(col1);
+
+                var col2 = document.createElement("td");
+                col2.innerHTML = key;
+                col2.setAttribute("id", "key");
+                row.appendChild(col2);
+
+                var col3 = document.createElement("td");
+                col3.innerHTML = value;
+                row.appendChild(col3);
+
+                table.appendChild(row);
+            }
+        </script>
+    </body>
+</html>

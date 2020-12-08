@@ -6,11 +6,64 @@
     <body>
         <h3>나의 단어장 만들기</h3>
         <hr>
-        <label> 영어 <input type="text"></label><br>
-        <label> 한글 <input type="text"></label><br>
-        <button>단어 저장</button>
-        <button>영단어 검색</button>
-        <button>단어 삭제</button>
-        <button>전체 보기</button>
+        <label> 영어 <input type="text" id="eng"></label><br>
+        <label> 한글 <input type="text" id="ko"></label>
+        <br><br>
+        <button id="save" onclick="stor()">단어 저장</button>
+        <button id="serch" onclick="check()">영단어 검색</button>
+        <button id="erase" onclick="erase()">단어 삭제</button>
+        <button id="all" onclick="show()">전체 보기</button>
+        <script>
+            var eng = document.getElementById("eng");
+            var ko = document.getElementById("ko");
+
+            function stor() {
+                if(!window.sessionStorage) {
+                    alert("세션스토리지를 지원하지 않습니다.");
+                    return;
+                }
+                var e = sessionStorage.getItem(eng.value);
+                if(e != null) {
+                    var ret = confirm(eng.value + "가 이미 있습니다. 수정하시겠습니까?");
+                    if(ret == true) {
+                        sessionStorage.setItem(e, ko.value);
+                    }
+                } else {
+                    sessionStorage.setItem(eng.value, ko.value);
+                }
+            }
+            function check() {
+                if(!window.sessionStorage) {
+                    alert("세션스토리지를 지원하지 않습니다.");
+                    return;
+                }
+                var val = sessionStorage.getItem(eng.value);
+                if(val == null) {
+                    alert(eng.value + "는 없는 영단어 입니다.");
+                } 
+                else {
+                    ko.value = val;
+                }
+            }
+            function erase() {
+                if(!window.sessionStorage) {
+                    alert("세션스토리지를 지원하지 않습니다.");
+                    return;
+                }
+                var val = sessionStorage.getItem(eng.value);
+                if(val = null)
+                    alert(eng.value + "는 없는 영단어 입니다.");
+                else
+                    sessionStorage.removeItem(eng.value, ko.value);
+            }
+            function show() {
+                if(!window.sessionStorage) {
+                    alert("세션스토리지를 지원하지 않습니다.");
+                    return;
+                }
+                var win = window.open();
+                win.location = "2020-2-WebProg-3-HW13-Main2-김희주-32161337.html";
+            }
+        </script>
     </body>
 </html>

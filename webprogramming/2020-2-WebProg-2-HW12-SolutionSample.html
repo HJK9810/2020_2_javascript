@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>캔버스에 파이 차트 그리기</title>
+	</head>
+	<body>
+		<script>
+			function makechart(){
+				var canvas = document.getElementById("grade");
+				var context = canvas.getContext("2d");
+				var grades = ["A", "B", "C", "D", "F"];
+				var colors = ["blue", "green", "yellow", "magenta", "red"];
+				context.font = "20px Gothic";
+
+				var a = new Array;
+				var i = 0;
+				var text = "";
+				var sum = 0;
+				
+				for(i = 0; i<5;i++)
+					sum += parseInt(document.getElementById(grades[i]).value);
+				context.clearRect(0,0,canvas.width, canvas.height);
+
+				context.fillStyle = "blue";
+				context.strokeStyle = "blue";
+				var b = 0;
+
+				for(i=0; i<5; i++){
+					a[i] = parseInt(document.getElementById(grades[i]).value);
+					var c = a[i]/sum*100;
+					text = grades[i] + "학점" + parseInt(c) + "% : " + colors[i];
+					context.strokeText(text, 10, 20 + i*30);
+					context.fillStyle = colors[i];
+					context.beginPath();
+					context.moveTo(300, 300);
+					context.arc(300, 300, 150, b , b+2*c*Math.PI/100);
+					context.lineTo(300, 300);
+					context.fill();
+					b = b + (2*c*Math.PI)/100;
+				}
+			}
+		</script>
+		<h3>학점 별로 학생 수를 입력하면 파이 차트로 비율 그리기</h3>
+		<hr>
+		<form>
+			A<input id="A" type="number" value="0">명
+			B<input id="B" type="number" value="0">명
+			C<input id="C" type="number" value="0">명
+			<br>
+			D<input id="D" type="number" value="0">명
+			F<input id="F" type="number" value="0">명
+			<button type="button" onclick="javascript:makechart()"> 차트그리기 </button>
+		</form>
+		<br>
+		<canvas id="grade" style="background-color:aliceblue" width="600" height="500"></canvas>
+	</body>
+</html>
